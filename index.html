@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letters I Never Sent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f3f0 0%, #faf9f7 100%);
+            color: #3a3a3a;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Landing Section */
+        .landing {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .title {
+            font-family: 'Georgia', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 400;
+            color: #2c2c2c;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            color: #7a7a7a;
+            font-weight: 300;
+            font-style: italic;
+            max-width: 400px;
+        }
+
+        /* Letters Section */
+        .letters-section {
+            padding: 80px 0 120px;
+        }
+
+        .letter-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(220, 210, 200, 0.3);
+            border-radius: 12px;
+            padding: 32px 28px;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .letter-card:hover {
+            background: rgba(255, 255, 255, 0.75);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .letter-card.visible:hover {
+            transform: translateY(-2px);
+        }
+
+        .letter-placeholder {
+            text-align: center;
+            color: #b5a99a;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            user-select: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .letter-hint {
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            font-style: italic;
+            opacity: 0.6;
+            user-select: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .letter-text {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            line-height: 1.8;
+            color: #4a4a4a;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .letter-card.revealed .letter-text {
+            opacity: 1;
+            max-height: 500px;
+        }
+
+        .letter-card.revealed .letter-placeholder,
+        .letter-card.revealed .letter-hint {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .letter-card.revealed {
+            cursor: default;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 0 80px;
+            color: #999;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Scroll Indicator */
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.4;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-hint::after {
+            content: '↓';
+            font-size: 24px;
+            color: #999;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 8px); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .landing {
+                padding: 40px 0;
+            }
+            
+            .letter-card {
+                padding: 24px 20px;
+                margin-bottom: 24px;
+            }
+            
+            .letters-section {
+                padding: 60px 0 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Landing Section -->
+    <section class="landing">
+        <div class="container">
+            <h1 class="title">Letters I Never Sent</h1>
+            <p class="subtitle">For Mulan.</p>
+        </div>
+        <div class="scroll-hint"></div>
+    </section>
+
+    <!-- Letters Section -->
+    <section class="letters-section">
+        <div class="container">
+            <div class="letter-card">
+                <div class="letter-placeholder">⋯</div>
+                <div class="letter-hint">Tap to read</div>
+                <p class="letter-text">
+                    I think about the way you laugh when something catches you off guard. It's the most honest sound I know.
+                </p>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-placeholder">⋯</div>
+                <div class="letter-hint">Tap to read</div>
+                <p class="letter-text">
+                    Sometimes I write your name in the margins of my notebook, then erase it before anyone can see.
+                </p>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-placeholder">⋯</div>
+                <div class="letter-hint">Tap to read</div>
+                <p class="letter-text">
+                    You said something small last Tuesday, and it's been living in my chest ever since. I don't think you noticed.
+                </p>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-placeholder">⋯</div>
+                <div class="letter-hint">Tap to read</div>
+                <p class="letter-text">
+                    I wanted to tell you that you make ordinary moments feel like they matter. But I just smiled instead.
+                </p>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-placeholder">⋯</div>
+                <div class="letter-hint">Tap to read</div>
+                <p class="letter-text">
+                    There are conversations I rehearse in my head that we'll probably never have. Still, I keep them close.
+                </p>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-placeholder">⋯</div>
+                <div class="letter-hint">Tap to read</div>
+                <p class="letter-text">
+                    I hope you're proud of yourself for the small things too. The way you show up matters more than you think.
+                </p>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-placeholder">⋯</div>
+                <div class="letter-hint">Tap to read</div>
+                <p class="letter-text">
+                    If I could be honest for just one moment, I'd tell you that knowing you has changed something in me I can't name.
+                </p>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-placeholder">⋯</div>
+                <div class="letter-hint">Tap to read</div>
+                <p class="letter-text">
+                    You deserve someone who sees you the way I do—quietly, completely, without needing anything in return.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            Some words are meant for quiet moments.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.letter-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Click-to-reveal letter functionality
+        document.querySelectorAll('.letter-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Only reveal if not already revealed
+                if (!this.classList.contains('revealed')) {
+                    this.classList.add('revealed');
+                }
+            });
+        });
+
+        // Hide scroll hint after scroll
+        let scrollHintHidden = false;
+        window.addEventListener('scroll', () => {
+            if (!scrollHintHidden && window.scrollY > 100) {
+                const hint = document.querySelector('.scroll-hint');
+                if (hint) {
+                    hint.style.opacity = '0';
+                    scrollHintHidden = true;
+                }
+            }
+        });
+
+        // Smooth scrolling
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
